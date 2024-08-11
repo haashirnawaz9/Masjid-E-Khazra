@@ -13,7 +13,7 @@ async function fetchPrayerTimes(): Promise<PrayerTimes | null> {
   try {
     const response = await axios.get('https://api.aladhan.com/v1/timingsByCity', {
       params: {
-        city: 'Flushing',
+        city: 'Queens',
         country: 'USA',
         method: 2,
       },
