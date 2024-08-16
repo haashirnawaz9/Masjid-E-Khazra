@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { FC } from 'react';
 
 interface PrayerTimes {
   Fajr: string;
@@ -25,7 +26,7 @@ async function fetchPrayerTimes(): Promise<PrayerTimes | null> {
   }
 }
 
-export default async function Page() {
+const Page: FC = async () => {
   const prayerTimes = await fetchPrayerTimes();
   const date = new Date().toDateString();
 
@@ -54,4 +55,6 @@ export default async function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;
