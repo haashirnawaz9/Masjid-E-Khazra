@@ -1,5 +1,5 @@
+import { format } from 'date-fns-tz';
 import axios from 'axios';
-import { FC } from 'react';
 
 interface PrayerTimes {
   Fajr: string;
@@ -26,9 +26,13 @@ async function fetchPrayerTimes(): Promise<PrayerTimes | null> {
   }
 }
 
-const Page: FC = async () => {
+const Page = async () => {
   const prayerTimes = await fetchPrayerTimes();
-  const date = new Date().toDateString();
+
+  // Define the time zone for your location
+  const timeZone = 'America/New_York';
+  // Get the current date in the specified time zone
+  const date = format(new Date(), 'eeee, MMMM d, yyyy', { timeZone });
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-white p-4">
