@@ -18,6 +18,9 @@ async function fetchPrayerTimes(): Promise<PrayerTimes | null> {
         country: 'United States',
         method: 2,
       },
+      headers: {
+        'Cache-Control': 'no-store',
+      },
     });
     return response.data.data.timings as PrayerTimes;
   } catch (error) {
