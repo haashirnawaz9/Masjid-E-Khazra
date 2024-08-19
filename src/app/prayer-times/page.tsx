@@ -29,12 +29,12 @@ async function fetchPrayerTimes(): Promise<PrayerTimes | null> {
   }
 }
 
+export const revalidate = 0; // This will force dynamic rendering on every request
+
 const Page = async () => {
   const prayerTimes = await fetchPrayerTimes();
 
-  // Define the time zone for your location
   const timeZone = 'America/New_York';
-  // Get the current date in the specified time zone
   const date = format(new Date(), 'eeee, MMMM d, yyyy', { timeZone });
 
   return (
